@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('facebook_id')->unique()->nullable();
             $table->unsignedBigInteger('linkedin_id')->unique()->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->integer("age");
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

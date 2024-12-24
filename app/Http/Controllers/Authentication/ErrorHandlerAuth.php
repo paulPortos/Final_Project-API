@@ -14,7 +14,8 @@ class ErrorHandlerAuth
                 return response()->json(['error' => $errorFields[$field][0]], 422);
             }
         }
-        return response()->json(['error' => 'Unknown error'], 500);
+        $firstField = array_key_first($errorFields);
+        return response()->json(['error' => $errorFields[$firstField][0]], 422);
     }
 
     public function ifCredentialExist($credentials) {
