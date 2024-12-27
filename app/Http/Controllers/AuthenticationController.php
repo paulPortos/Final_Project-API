@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Authentication\ErrorHandlerAuth;
-use App\Http\Controllers\Authentication\NameFormater;
+use App\Http\Controllers\Custom_Libraries\ErrorHandlerAuth;
+use App\Http\Controllers\Custom_Libraries\NameFormater;
 use App\Models\User;
 use App\Rules\NameWithoutNumbers;
 use App\Rules\RFCEmail;

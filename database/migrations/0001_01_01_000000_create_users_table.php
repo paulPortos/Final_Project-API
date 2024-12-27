@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('facebook_id')->unique()->nullable();
-            $table->unsignedBigInteger('linkedin_id')->unique()->nullable();
+            $table->string('profile_picture')->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('username')->unique();
+            $table->string('username')->unique()->index();
             $table->string('email')->unique();
             $table->integer("age");
             $table->string('password');
@@ -27,9 +27,9 @@ return new class extends Migration
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+            $table->string('email')->primary()->index();
             $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
 
         Schema::create('sessions', function (Blueprint $table) {

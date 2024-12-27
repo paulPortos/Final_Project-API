@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Authentication;
+namespace App\Http\Controllers\Custom_Libraries;
 
 use Illuminate\Support\Facades\Log;
 
