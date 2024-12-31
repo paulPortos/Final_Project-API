@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Custom_Libraries\CheckIfLoggedIn;
 use App\Http\Controllers\Custom_Libraries\ErrorHandlerAuth;
 use App\Http\Controllers\Custom_Libraries\NameFormater;
 use App\Models\User;
@@ -16,12 +17,14 @@ class UserAuthenticationController extends Controller
 {
     protected ErrorHandlerAuth $errorHandler;
     protected NameFormater $nameFormater;
+    protected CheckIfLoggedIn $checkIfLoggedIn;
 
     // Initialize ErrorHandlerAuth in the constructor
     public function __construct()
     {
         $this->errorHandler = new ErrorHandlerAuth();
         $this->nameFormater = new NameFormater();
+        $this->checkIfLoggedIn = new CheckIfLoggedIn();
     }
 
     public function register(Request $request) {
@@ -81,7 +84,15 @@ class UserAuthenticationController extends Controller
             ],422);
         }
 
-        $token = $user->createToken('authToken')->accessToken;
+        //Check if user is already logged in on another device
+        $isLoggedIn = $this->checkIfLoggedIn->checkIfLoggedIn($logigData['email']);
+        if ($isLoggedIn) {
+            return response()->json([
+                'message' => "Already logged in on another device.",
+            ]);
+        }
+
+        $token = $user->createToken('UserAccessToken')->accessToken;
 
         return response()->json([
             'first_name' => $user->first_name,

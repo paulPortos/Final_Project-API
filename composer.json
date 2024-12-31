@@ -10,7 +10,8 @@
         "egulias/email-validator": "^4.0",
         "laravel/framework": "^11.31",
         "laravel/passport": "^12.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "ext-couchbase": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

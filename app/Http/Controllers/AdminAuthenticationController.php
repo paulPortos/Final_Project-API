@@ -57,7 +57,7 @@ class AdminAuthenticationController extends Controller
 
         if ($admin && Hash::check($loginData['password'], $admin->password)) {
             // Generate a token for the authenticated admin
-            $token = $admin->createToken('Admin Access Token')->accessToken;
+            $token = $admin->createToken('AdminAccessToken')->accessToken;
 
             return response()->json(['token' => $token], 200);
         }
