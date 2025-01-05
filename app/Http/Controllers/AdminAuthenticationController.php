@@ -66,6 +66,7 @@ class AdminAuthenticationController extends Controller
 
     }
     public function logout(Request $request) {
-
+        $user = $request->user();
+        $user->token()->revoke();
     }
 }

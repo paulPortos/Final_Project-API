@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
         return response()->json($totalUsers);
     }
-
+    
     public function activeUsersCount() {
         $count = DB::table('oauth_access_tokens')
             ->where('name', 'UserAccessToken')

@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Chat extends Model
 {
-    protected $table = 'chat';
+    protected $table = 'chats';
     protected $fillable = [
-        'sender_id',
+        'user_id',
         'email',
         'image_path',
         'chat_message',
     ];
 
     public function linkToUser(): BelongsTo {
-        return $this->belongsTo(Chat::class, 'sender_id', 'id');
+        return $this->belongsTo(Chat::class, 'user_id');
     }
 }

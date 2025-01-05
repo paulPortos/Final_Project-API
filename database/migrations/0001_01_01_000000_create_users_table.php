@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('username')->unique()->index();
             $table->string('email')->unique();
             $table->integer("age");
+            $table->enum('role', ['client', 'tradesman'])->default('client');
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
